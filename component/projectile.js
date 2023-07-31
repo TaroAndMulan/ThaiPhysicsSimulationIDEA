@@ -11,7 +11,7 @@ import {
   Sky,
   useKeyboardControls,
   GizmoHelper,
-  GizmoViewport, useFBX
+  GizmoViewport, useFBX,Text
 } from "@react-three/drei";
 import { Clock, Vector3 } from "three";
 import { Physics, RigidBody, CuboidCollider,Debug } from "@react-three/rapier";
@@ -30,28 +30,15 @@ export default function Projectile() {
   const [isPause,setIspause] = useState(false)
   const [arrvisible,setArrvisible] = useState(true)
   const [arrvisibleCannon,setArrvisibleCannon] = useState(true)
-  const { speed,gridOn } = useControls({
+  const [isshot,setIsshot] = useState(false)
+
+  const { gridOn,speed } = useControls({
     gridOn:false,
-    speed: { value: 1, min: 0, max: 100, step: 1 },
-    SHOOT: button(()=>{    cannon.current.setTranslation({x:-70,y:0,z:0})
-    player.current.setTranslation({x:20,y:0,z:0})
-    cannon.current.setLinvel({x:0,y:0,z:0})
-    player.current.setLinvel({x:0,y:0,z:0})
-    setArrvisible(true)
-    setArrvisibleCannon(true)
-       console.log("start")
-    cannon.current.setLinvel({x:40*Math.cos(Math.PI/6),y:40*Math.sin(Math.PI/6),z:0})
-    player.current.setLinvel({x:0,y:speed,z:0})
-    setArrvisible(false)
-    setArrvisibleCannon(false)}),
-    RESET: button(()=>{      console.log("reset")
-    cannon.current.setTranslation({x:-70,y:0,z:0})
-    player.current.setTranslation({x:20,y:0,z:0})
-    cannon.current.setLinvel({x:0,y:0,z:0})
-    player.current.setLinvel({x:0,y:0,z:0})
-    setArrvisible(true)
-    setArrvisibleCannon(true)})
+    speed: { value: 20, min: 0, max: 100, step: 1},
   });
+
+
+
   let player = useRef();
   let cannon = useRef();
   let elephant = useRef();
@@ -61,7 +48,16 @@ export default function Projectile() {
 
   useFrame((state, delta) => {
     const { start,reset,slow } = getKeys();
-    if (start) {
+    if (start || isshot) {
+
+
+      console.log("reset")
+      cannon.current.setTranslation({x:-70,y:0,z:0})
+      player.current.setTranslation({x:20,y:0,z:0})
+      cannon.current.setLinvel({x:0,y:0,z:0})
+      player.current.setLinvel({x:0,y:0,z:0})
+      setArrvisible(true)
+      setArrvisibleCannon(true)
       //console.log("translateion: ",cannon.current.translation())
 
       //cannon.current.setLinvel({x:0,y:10,z:0})
@@ -72,6 +68,7 @@ export default function Projectile() {
       player.current.setLinvel({x:0,y:speed,z:0})
       setArrvisible(false)
       setArrvisibleCannon(false)
+      setIsshot(false)
       //cannon.current.children[0].scale = 2
       
     }
@@ -94,6 +91,22 @@ export default function Projectile() {
 
   return (
     <>
+
+<Text color="black" position={[0,30,0]} scale={10}>
+  Press S to shoot
+
+</Text>
+
+
+<Text color="black" position={[0,50,0]} scale={10}>
+Press R to reset simulation
+
+</Text>
+
+    <mesh visible={false }position= {[0,0,speed]}>
+      <boxGeometry></boxGeometry>
+      <meshStandardMaterial></meshStandardMaterial>
+    </mesh>
     <Sky distance={450000} sunPosition={[0, 1, 0]} inclination={80} rayleigh={0.1} azimuth={50} />
     <primitive ref={elephant} scale={15} rotation={[0,Math.PI/2,0]} position={[0,-1,0]} object={gltf.scene} />
 

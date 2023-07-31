@@ -84,14 +84,21 @@ export default function Home() {
      
 
           <div className="text-lg mt-5 font-bold">
+
+            This is a 3D scene, you can zoom and move around like in video game. ( R=reset , S=shoot)
            <br/><br/><br/>
 
            Try it yourself, set the speed to 20 m/s to make the objects collided.
            <br/><br/><br/>
 
+           Change the speed to something else and see what happen.
+           <br/><br/><br/>
+
            We even make it better than the original, we put an elephant in the scene as a comparison to show student how fast it is to travel with these speed 
            <br/><br/><br/>
-           The solution look boring right? There is no fun in calculation if we do not get to see it for real !!   
+               
+           Tick gridOn to turn on the grid, this can be use as a ruler to measure the motion of the object. 
+           <br/><br/><br/>
           </div>
 
 
