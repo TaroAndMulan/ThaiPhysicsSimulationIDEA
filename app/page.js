@@ -51,7 +51,7 @@ export default function Home() {
           />
 
           <div className="text-lg mt-10 font-bold">
-           This is an official solution written in the book. We have to shoot object B with the speed of 20m/s to hit object A.
+           This is an official solution written in the book. We have to launch object B with the speed of 20m/s to hit object A.
            <br/><br/><br/>
            The solution look boring right? There is no fun in calculation if we do not get to see it for real !!   
           </div>
@@ -61,7 +61,7 @@ export default function Home() {
 
 
         <div className="text-3xl font-mono font-bold pb-16">
-            Our start up turn it into an interactive simulation
+            Our startup turn it into an interactive simulation
           </div>
 
           <div className="w-11/12 h-[60rem]">
@@ -85,7 +85,7 @@ export default function Home() {
 
           <div className="text-lg mt-5 font-bold">
 
-            This is a 3D scene, you can zoom and move around like in video game. ( R=reset , S=shoot)
+            This is a 3D scene, you can zoom in and move around like in video game. ( R=reset , S=shoot)
            <br/><br/><br/>
 
            Try it yourself, set the speed to 20 m/s to make the objects collided.
@@ -94,7 +94,7 @@ export default function Home() {
            Change the speed to something else and see what happen.
            <br/><br/><br/>
 
-           We even make it better than the original, we put an elephant in the scene as a comparison to show student how fast it is to travel with these speed 
+           We put an elephant in the scene as a comparison to show student how fast it is to travel with these speeds
            <br/><br/><br/>
                
            Tick gridOn to turn on the grid, this can be use as a ruler to measure the motion of the object. 
