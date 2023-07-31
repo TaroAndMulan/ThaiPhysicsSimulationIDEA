@@ -1,113 +1,135 @@
-import Image from 'next/image'
+"use client";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { useRef } from "react";
+import Projectile from "@/component/projectile";
+import { KeyboardControls } from "@react-three/drei/web";
+import "./globals.css";
+import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <div className="flex flex-col gap-32">
+
+
+      <div className="border-red-600 border-4 rounded-lg w-1/2 mx-auto  bg-red-200">
+          <div className="text-7xl text-green-600">Tamoo</div>
+          <div className="text-lg text-green-600">Digitize and Modernize teaching material for school</div>
+          
         </div>
+
+
+        <div className=" border-4 rounded-lg  bg-red-200 mt-48 flex items-center justify-center p-20 flex-col">
+          <div className="text-3xl font-mono font-bold pb-16">
+            An excercise from Thailand highschool physics book (สสวท)
+          </div>
+          <Image
+            src="/problemsswt.png"
+            width={616}
+            height={294}
+            alt="problem"
+          />
+
+          <div className="text-sm mt-5">
+            Translation: Object A is launched from the ground at an angle of 30
+            degrees with the horizontal and an initial speed of 40 m/s. Suppose
+            that we want to launch object B straight upward at the same time.
+            What initial speed should we give object B so that both objects would
+            collide mid-air?
+          </div>
+        </div>
+
+        <div className=" border-4 rounded-lg  bg-red-200 mt-48 flex items-center justify-center p-20 flex-col">
+          <div className="text-3xl font-mono font-bold pb-16">
+            The solution from the book
+          </div>
+          <Image
+            src="/sol.png"
+            width={617}
+            height={750}
+            alt="problem"
+          />
+
+          <div className="text-lg mt-10 font-bold">
+           This is an official solution written in the book. We have to shoot object B with the speed of 20m/s to hit object A.
+           <br/><br/><br/>
+           The solution look boring right? There is no fun in calculation if we do not get to see it for real !!   
+          </div>
+        </div>
+
+        <div className=" border-4 rounded-lg  bg-red-200 mt-48 flex items-center justify-center p-20 flex-col">
+
+
+        <div className="text-3xl font-mono font-bold pb-16">
+            Our start up turn it into an interactive simulation
+          </div>
+
+          <div className="w-11/12 h-[60rem]">
+
+          <KeyboardControls
+            map={[
+              { name: "start", keys: ["KeyS"] },
+              { name: "reset", keys: ["KeyR"] },
+              { name: "slow", keys: ["KeyP"] },
+            ]}
+          >
+            <Canvas
+              shadows
+              camera={{ fov: 75, near: 0.1, far: 1000, position: [0, 10, 100] }}
+            >
+              <Projectile />
+            </Canvas>
+          </KeyboardControls>
+          </div>
+     
+
+          <div className="text-lg mt-5 font-bold">
+           <br/><br/><br/>
+
+           Try it yourself, set the speed to 20 m/s to make the objects collided.
+           <br/><br/><br/>
+
+           We even make it better than the original, we put an elephant in the scene as a comparison to show student how fast it is to travel with these speed 
+           <br/><br/><br/>
+           The solution look boring right? There is no fun in calculation if we do not get to see it for real !!   
+          </div>
+
+
+
+        </div>
+
+
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    </>
+  );
 }
+
+/*
+
+
+import { memo } from 'react'
+import { Canvas } from '@react-three/fiber'
+import { Grid, Center, GizmoHelper, GizmoViewport, AccumulativeShadows, RandomizedLight, OrbitControls, Environment, useGLTF } from '@react-three/drei'
+import { useControls } from 'leva'
+
+  
+
+    <Canvas shadows camera={{ position: [10, 12, 12], fov: 25 }}>
+ 
+          <mesh castShadow>
+            <sphereGeometry args={[0.5, 64, 64]} />
+            <meshStandardMaterial color="#9d4b4b" />
+          </mesh>
+          <mesh castShadow rotation={[0, Math.PI / 4, 0]}>
+            <boxGeometry args={[0.7, 0.7, 0.7]} />
+            <meshStandardMaterial color="#9d4b4b" />
+          </mesh>
+      
+        <Grid position={[0, -0.01, 0]} args={gridSize} {...gridConfig} />
+      <Environment preset="city" />
+      <GizmoHelper alignment="bottom-right" margin={[80, 80]}>
+        <GizmoViewport axisColors={['#9d4b4b', '#2f7f4f', '#3b5b9d']} labelColor="white" />
+      </GizmoHelper>
+    </Canvas>
+
+*/
