@@ -13,8 +13,8 @@ export default function Home() {
 
 
       <div className="border-red-600 border-4 rounded-lg w-1/2 mx-auto  bg-red-200">
-          <div className="text-7xl text-green-600">Tamoo</div>
-          <div className="text-lg text-green-600">Digitize and Modernize teaching material for school</div>
+          <div className="text-7xl text-red-600 text-center">Tamoo</div>
+          <div className="text-lg text-red-400 text-center">Digitize and Modernize teaching material for school</div>
           
         </div>
 
@@ -88,7 +88,7 @@ export default function Home() {
             This is a 3D scene, you can zoom in and move around like in video game. ( R=reset , S=shoot)
            <br/><br/><br/>
 
-           Try it yourself, set the speed to 20 m/s to make the objects collided.
+           Try it yourself, set the speed to 20 m/s to make the objects collides.
            <br/><br/><br/>
 
            Change the speed to something else and see what happen.
@@ -97,7 +97,7 @@ export default function Home() {
            We put an elephant in the scene as a comparison to show student how fast it is to travel with these speeds
            <br/><br/><br/>
                
-           Tick gridOn to turn on the grid, this can be use as a ruler to measure the motion of the object. 
+           Tick gridOn to turn on the grid, this can be use as a ruler to analyzes the motion of the object. 
            <br/><br/><br/>
           </div>
 

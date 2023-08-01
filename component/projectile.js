@@ -31,11 +31,33 @@ export default function Projectile() {
   const [arrvisible,setArrvisible] = useState(true)
   const [arrvisibleCannon,setArrvisibleCannon] = useState(true)
   const [isshot,setIsshot] = useState(false)
-
-  const { gridOn,speed } = useControls({
-    gridOn:false,
+  const cheat = useRef();
+  const {gridOn,speed} = useControls(
+  {gridOn:false,
     speed: { value: 20, min: 0, max: 100, step: 1},
-  });
+    shoot : button(()=>{
+      cannon.current.setTranslation({x:-70,y:0,z:0},true)
+      player.current.setTranslation({x:20,y:0,z:0},true)
+      cannon.current.setLinvel({x:0,y:0,z:0},true)
+      player.current.setLinvel({x:0,y:0,z:0},true)
+      cannon.current.setLinvel({x:40*Math.cos(Math.PI/6),y:40*Math.sin(Math.PI/6),z:0},true)
+      player.current.setLinvel({x:0,y:cheat.current.position.z,z:0},true)
+      setArrvisible(false)
+      setArrvisibleCannon(false)
+
+    }),
+    reset :  button(()=>{
+      cannon.current.setTranslation({x:-70,y:0,z:0},true)
+      player.current.setTranslation({x:20,y:0,z:0},true)
+      cannon.current.setLinvel({x:0,y:0,z:0},true)
+      player.current.setLinvel({x:0,y:0,z:0},true)
+      setArrvisible(true)
+      setArrvisibleCannon(true)
+
+    })
+  }
+    
+  );
 
 
 
@@ -48,36 +70,25 @@ export default function Projectile() {
 
   useFrame((state, delta) => {
     const { start,reset,slow } = getKeys();
-    if (start || isshot) {
+    if (start) {
 
 
-      console.log("reset")
-      cannon.current.setTranslation({x:-70,y:0,z:0})
-      player.current.setTranslation({x:20,y:0,z:0})
-      cannon.current.setLinvel({x:0,y:0,z:0})
-      player.current.setLinvel({x:0,y:0,z:0})
-      setArrvisible(true)
-      setArrvisibleCannon(true)
-      //console.log("translateion: ",cannon.current.translation())
-
-      //cannon.current.setLinvel({x:0,y:10,z:0})
-      //cannon.current.setTranslation({x:0,y:5,z:0})
-      //console.log("current:  ",cannon.current)
-      console.log("start")
-      cannon.current.setLinvel({x:40*Math.cos(Math.PI/6),y:40*Math.sin(Math.PI/6),z:0})
-      player.current.setLinvel({x:0,y:speed,z:0})
+      cannon.current.setTranslation({x:-70,y:0,z:0},true)
+      player.current.setTranslation({x:20,y:0,z:0},true)
+      cannon.current.setLinvel({x:0,y:0,z:0},true)
+      player.current.setLinvel({x:0,y:0,z:0},true)
+      cannon.current.setLinvel({x:40*Math.cos(Math.PI/6),y:40*Math.sin(Math.PI/6),z:0},true)
+      player.current.setLinvel({x:0,y:speed,z:0},true)
       setArrvisible(false)
       setArrvisibleCannon(false)
-      setIsshot(false)
-      //cannon.current.children[0].scale = 2
       
     }
     if (reset){
-      console.log("reset")
-      cannon.current.setTranslation({x:-70,y:0,z:0})
-      player.current.setTranslation({x:20,y:0,z:0})
-      cannon.current.setLinvel({x:0,y:0,z:0})
-      player.current.setLinvel({x:0,y:0,z:0})
+     
+      cannon.current.setTranslation({x:-70,y:0,z:0},true)
+      player.current.setTranslation({x:20,y:0,z:0},true)
+      cannon.current.setLinvel({x:0,y:0,z:0},true)
+      player.current.setLinvel({x:0,y:0,z:0},true)
       setArrvisible(true)
       setArrvisibleCannon(true)
     }
@@ -103,7 +114,7 @@ Press R to reset simulation
 
 </Text>
 
-    <mesh visible={false }position= {[0,0,speed]}>
+    <mesh ref={cheat} visible={false} position= {[0,10,speed]}>
       <boxGeometry></boxGeometry>
       <meshStandardMaterial></meshStandardMaterial>
     </mesh>
@@ -124,7 +135,7 @@ Press R to reset simulation
           />
         </GizmoHelper>
 
-        <RigidBody position={[-70, 0, 0]} ref={cannon}>
+        <RigidBody position={[-70, 0, 0]}  ref={cannon}>
           <mesh castShadow >
             <sphereGeometry castShadow args={[1]} />
             <meshPhysicalMaterial
