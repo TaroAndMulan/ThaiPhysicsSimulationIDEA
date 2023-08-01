@@ -14,9 +14,11 @@ export default function Home() {
 
       <div className="border-red-600 border-4 rounded-lg w-1/2 mx-auto  bg-red-200">
           <div className="text-7xl text-red-600 text-center">Tamoo</div>
-          <div className="text-lg text-red-400 text-center">Digitize and Modernize teaching material for school</div>
+          <div className="text-lg text-black text-center">Digitize and Modernize teaching material for school</div>
           
         </div>
+
+
 
 
         <div className=" border-4 rounded-lg  bg-red-200 mt-48 flex items-center justify-center p-20 flex-col">
