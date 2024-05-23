@@ -13,7 +13,7 @@ export default function Home() {
 
 
       <div className="border-red-600 border-4 rounded-lg w-1/2 mx-auto  bg-red-200">
-          <div className="text-7xl text-red-600 text-center">Tamoo</div>
+          <div className="text-7xl text-red-600 text-center">TaroMulan</div>
           <div className="text-lg text-black text-center">Digitize and Modernize teaching material for school</div>
           
         </div>
@@ -63,7 +63,7 @@ export default function Home() {
 
 
         <div className="text-3xl font-mono font-bold pb-16">
-            Our startup turn it into an interactive simulation
+            We can turn this problem into an interactive simulation
           </div>
 
           <div className="w-11/12 h-[60rem]">
@@ -96,7 +96,7 @@ export default function Home() {
            Change the speed to something else and see what happen.
            <br/><br/><br/>
 
-           We put an elephant in the scene as a comparison to show student how fast it is to travel with these speeds
+           We put an elephant in the scene as a comparison to show student how fast it is to move with these speeds
            <br/><br/><br/>
                
            Tick gridOn to turn on the grid, this can be use as a ruler to analyzes the motion of the object. 
