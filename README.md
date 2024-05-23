@@ -9,6 +9,6 @@ npm run dev
 ```
 
 ## Pictures
-[demopic](/public/demoscreen.png)
-[demogif](/public/gif.gif)
+[demopic](/public/images/demoscreen.png)
+[demogif](/public/images/gif.gif)
 
