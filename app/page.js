@@ -26,7 +26,7 @@ export default function Home() {
             An excercise from Thailand highschool physics book (สสวท)
           </div>
           <Image
-            src="/problemsswt.png"
+            src="/images/problemsswt.png"
             width={616}
             height={294}
             alt="problem"
@@ -46,7 +46,7 @@ export default function Home() {
             The solution from the book
           </div>
           <Image
-            src="/sol.png"
+            src="/images/sol.png"
             width={617}
             height={750}
             alt="problem"
